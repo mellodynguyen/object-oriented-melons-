@@ -45,9 +45,24 @@ def make_melon_types():
 
     all_melon_types = []
 
-    # self.name muskmelon
+    # order is: self, code, first_harvest, color, is_seedless, is_bestseller, name
 
-    #all_melon_types.append
+    musk = MelonType("musk", 1998, "green", True, True, "Muskmelon")
+    musk.add_pairing("mint")
+    all_melon_types.append(musk)
+    
+    cas = MelonType("cas", 2003, "orange", True, False, "Casaba")
+    cas.add_pairing("strawberries")
+    cas.add_pairing("mint")
+    all_melon_types.append(cas)
+    
+    cren = MelonType("cren", 1996, "green", True, False, "Crenshaw")
+    cren.add_pairing("prosciutto")
+    all_melon_types.append(cren)
+    
+    yw = MelonType("YW", 2013, "yellow", True, True, "Yellow Watermelon")
+    yw.add_pairing("ice cream")
+    all_melon_types.append(yw)
 
     return all_melon_types
 
@@ -55,13 +70,30 @@ def make_melon_types():
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
 
-    self.name = f"{self.name} this pairs well with {pairing}"
+    # melon type code = melon_type_woo[1]
+    # expected output YW: Yellow Watermelon
+    # for loop -> for YW not in melon_type_dict 
+    for melon in melon_Types:
+        print(f"{melon.name} pairs with")
+        for pairing in melon.pairings:  
+            print(f"-{pairing}")
+print_pairing_info(melon_types_woo)
 
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
+    melon_type_dict = {}
+    for melon in melon_types:
+    if melon.code not in melon_type_dict:
+        melon_type_dict[melon.code] = melon
+    
+    
+    # melon_type_dict[key] = "Melon Type"
+    # >>> (output) -> melon_type_dict { YW: "Yellow Watermelon"}
+    # return a dictionary whose keys are reporting codes, values are melon type for that code
+    return melon_type_dict
 
-    # Fill in the rest
+
 
 
 ############
@@ -71,7 +103,7 @@ def make_melon_type_lookup(melon_types):
 
 class Melon:
     """A melon in a melon harvest."""
-
+    
     # Fill in the rest
     # Needs __init__ and is_sellable methods
 
